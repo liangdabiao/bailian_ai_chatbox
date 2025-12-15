@@ -82,7 +82,7 @@
  
 <style>
 .lwh-open-cbot, .lwh-open-cbot :root {
-    --chatbot-width: 350px;
+    --chatbot-width: 525px;
     --chatbot-font-family: 'Segoe UI';
     --chatbot-image-position-bottom: 5%;
     --chatbot-image-position-right: 3%;
@@ -709,11 +709,20 @@ function markdownToHtml(markdown) {
     html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
     
-    // 链接
-    html = html.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+    // 图片 - 解码URL以避免双重编码问题
+    html = html.replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, (match, alt, url) => {
+        // 解码URL中的编码字符（如%3D -> =）
+        const decodedUrl = decodeURIComponent(url);
+        return `<img src="${decodedUrl}" alt="${alt}" style="max-width: 100%; height: auto;">`;
+    });
     
-    // 图片
-    html = html.replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; height: auto;">');
+    // 链接 - 解码URL以避免双重编码问题
+    html = html.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (match, text, url) => {
+        // 解码URL中的编码字符（如%3D -> =）
+        const decodedUrl = decodeURIComponent(url);
+        return `<a href="${decodedUrl}" target="_blank">${text}</a>`;
+    });
+
     
     // 换行
     html = html.replace(/\n/g, '<br>');

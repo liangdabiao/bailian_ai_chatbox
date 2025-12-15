@@ -1,11 +1,11 @@
-# Bailian 聊天客服机器人 - 阿里云百炼集成版
+# Bailian 聊天机器人 - 阿里云百炼集成版
 
 [![Python](https://img.shields.io/badge/Python-3.7%2B-blue.svg)](https://www.python.org/downloads/)
 [![Flask](https://img.shields.io/badge/Flask-2.3.3-green.svg)](https://flask.palletsprojects.com/)
 [![阿里云百炼](https://img.shields.io/badge/阿里云百炼-DashScope-orange.svg)](https://bailian.console.aliyun.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-这是一个智能客服聊天机器人系统，基于python，并深度集成阿里云百炼 AI 服务，提供实时流式对话体验。
+这是一个基于  智能客服聊天机器人系统，基于python，并深度集成阿里云百炼 AI 服务，提供实时流式对话体验。
 
 ![系统架构图](./微信图片_20251212161526_172_338.png)
 
@@ -517,6 +517,5 @@ def new_endpoint():
 - [Flask 官方文档](https://flask.palletsprojects.com/)
 
 ---
-
 
 ⭐ 如果这个项目对你有帮助，请给它一个星标！

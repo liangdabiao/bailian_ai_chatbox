@@ -129,11 +129,6 @@ def chat_bot_stream():
         # 构建消息历史 - 对应原来的config.php逻辑
         messages = []
 
-        # 添加系统消息
-        messages.append({
-            'role': 'system',
-            'content': Config.SYSTEM_PROMPT
-        })
 
         # 添加历史对话
         for item in conversation_history:
@@ -251,10 +246,6 @@ def chat_bot_non_stream():
 
         # 构建消息历史
         messages = []
-        messages.append({
-            'role': 'system',
-            'content': Config.SYSTEM_PROMPT
-        })
 
         for item in conversation_history:
             if isinstance(item, dict) and 'role' in item and 'content' in item:
